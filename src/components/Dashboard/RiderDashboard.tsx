@@ -4,8 +4,17 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { MapPin, Clock, Star, CreditCard } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
+import { useRouter } from 'next/navigation';
+
+
 
 export default function RiderDashboard() {
+
+  const router = useRouter();
+  const handleBookRide = () => {
+    router.push('/book-ride');
+  };
+
   const { user } = useAuth();
 
   return (
@@ -17,7 +26,7 @@ export default function RiderDashboard() {
 
       {/* Quick Actions */}
       <div className="grid md:grid-cols-2 gap-6">
-        <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+        <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={handleBookRide}>
           <CardHeader>
             <CardTitle className="flex items-center">
               <MapPin className="w-5 h-5 mr-2 text-blue-500" />
